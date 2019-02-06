@@ -13,22 +13,13 @@ const sequelize = new Sequelize('carsofmegacom', 'root', 'password', {
 sequelize.query("SELECT * FROM `fiat`", {type: sequelize.QueryTypes.SELECT})
 // Якщо виконання успішне, то працює then
     .then(materials => {
-        console.log(materials);
-try {
-    let materials1 = JSON.parse(materials, function (key, value) {
-        if (key === 'ONU') return new id(value);
-        return value
-    });
-}
-catch (e) {
-        materials1 = materials;
-}
 
-console.log(materials1.ONU)
-
+       materials.forEach(function (entry) {
+            console.log(entry)
+        });
 
         bot.onText(/\Fiat/, function (msg, match) {
-            bot.sendMessage(msg.chat.id, 'В автомобілі FIAT у наявності є такі матеріали:' )
+            bot.sendMessage(msg.chat.id, 'В автомобілі FIAT у наявності є такі матеріали:', )
         });
     })
     // Якщо виконання не було успішним, то помила попадає в catch
